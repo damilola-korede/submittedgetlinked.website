@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>contact Us</title>
+        <link rel="stylesheet" href="contact.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,
+    100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;
+    1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,
+    900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="header">
+                <div><a href="getlinked.html"><span style="font-size: 36px; font-weight: bold;">
+                    get<span style="color:#D434FE;
+                    font-size: 36px; font-weight: bold;
+                    ">linked</span></span></a>
+                    </div>
+    
+                <div class="header-sec">
+                    <div>Timeline</div>
+                    <div>Overview</div>
+                    <div>FaQs</div>
+                    <div><a href="contactpage.html"> Contact</a></div>
+                    <div><button><a href="registerpage.html"> Register</a></button></div>
+                </div>
+            </div>
+            </nav>
+   
+        <div class= "contact-section">
+            <div>
+                <p class="touch">
+                Get in touch</p>
+                <p class="contact">Contact </br> Information </p>
+                <p class="contact"> 
+                    27,Alara Street</br>
+                    Yaba 100012</br>
+                    Lagos State
+                </p>
+                    <p class="contact">Call Us : 07067981819</p>
+                    <p class="contact">we are open from Monday-Friday</br>
+                        08:00am - 05:00pm</p>
+                    <p class="follow"><span style="color: #D434FE;">Share on</span>
+                        <img class="social" src="img/Social media.png" alt=""></p>
+            </div> 
+            <div>
+                <div class="trans">
+                    <p class="questions">
+                        Questions or need assistance?</br>
+                        Let us know about it!
+                    </p>
+                   <form id="form"  class="myForm">
+                    <input class="fname" type="text" placeholder="First Name">
+                    <input class="mail" type="text" placeholder="Mail">
+                    <input  class="message" type="text" placeholder="Message">
+                    <button type="submit" class="submit">Submit</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+  
+         const Form =  document.querySelector('.myForm');
+            
+            
+         Form.addEventListener("submit",
+             (e)=>{ e.preventDefault();
+
+                const name = document.querySelector('.fname').value;
+                const email = document.querySelector('.mail').value;
+                const message = document.querySelector('.message').value;
+
+                console.log(name);
+
+                const formData = {
+                    name : name,
+                    email :email,
+                    message : message
+                };
+
+                fetch('https://backend.getlinked.ai//hackathon/contact-form',
+                {
+                    method: 'post',
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+
+                    body: JSON.stringify(formData)
+                    
+                }).then(function (response){
+                    return response.text ();
+                }).then(function(text){
+                    console.log(formData);
+                    alert ('form Submitted View Console');
+                })
+            
+            });
+        </script>
+    </body>
+</html>
